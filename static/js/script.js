@@ -105,9 +105,4 @@ function drawNodes()
 		var link = relations.links[i];
 		relations.outputs[ link[0] ].connectTo(relations.inputs[ link[1] ])
 	}
-
-}
-
-function l() {
-	console.log(...arguments)
 }

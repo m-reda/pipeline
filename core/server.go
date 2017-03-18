@@ -10,19 +10,10 @@ import (
 
 func ServerRun() {
 
-	/*
-	fail := pipelineRun("1")
-
-	if fail == nil {
-		println("[Build Success]")
-	} else {
-		println("[Build Fail]", fail.Error())
-	}
-	*/
-
 	r := mux.NewRouter()
 	r.HandleFunc("/api/pipelines/{key}", singlePipelineHandler).Methods("GET")
 	r.HandleFunc("/api/pipelines/{key}", storePipelineHandler).Methods("PUT")
+	r.HandleFunc("/api/pipelines/{key}/build", buildPipelineHandler)
 
     r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static")))
 

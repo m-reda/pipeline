@@ -31,33 +31,8 @@ func taskRun(id string, inputs map[string]string, tasks map[string]Task) error {
 
 		// if the task have command
 		if task.Command != "" {
-			// receive the inputs
-			for inputID, inputValue := range inputs {
-				task.Command = strings.Replace(task.Command, "{"+inputID+"}", inputValue, -1)
-			}
-
-			// execute the task command
-			cmd := strings.Split(task.Command, "|")
-			console, err := exec.Command(cmd[0], cmd[1:]...).Output()
-
-			logConsole(task.Name, task.Command, console)
-
-			if err != nil {
-				return err
-			}
-
-			// set the outputs values from the console
-			for _, line := range strings.Split(string(console), "\n") {
-				args := strings.Split(line, ":")
-
-				if len(args) < 2 {
-					args = append(args, "")
-				}
-
-				outputsValues[args[0]] = args[1]
-			}
+			execCommand(task.Command, inputs, task.Name)
 		}
-
 
 		// prepare the outputs and categorize them by the destination task
 		nextTasks := map[string] map[string]string{}
@@ -83,6 +58,38 @@ func taskRun(id string, inputs map[string]string, tasks map[string]Task) error {
 	}
 
 	return nil
+}
+
+func execCommand(command string, inputs map[string]string, taskName string) (map[string]string, error) {
+	// receive the inputs
+	for inputID, inputValue := range inputs {
+		command = strings.Replace(command, "{"+inputID+"}", inputValue, -1)
+	}
+
+	outputsValues := map[string]string{}
+
+	// execute the task command
+	cmd := strings.Split(command, "|")
+	console, err := exec.Command(cmd[0], cmd[1:]...).Output()
+
+	// logConsole(taskName, command, console)
+
+	if err != nil {
+		return outputsValues, err
+	}
+
+	// set the outputs values from the console
+	for _, line := range strings.Split(string(console), "\n") {
+		args := strings.Split(line, ":")
+
+		if len(args) < 2 {
+			args = append(args, "")
+		}
+
+		outputsValues[args[0]] = args[1]
+	}
+
+	return outputsValues, nil
 }
 
 // log build console output

@@ -7,7 +7,7 @@ import (
 
 func singlePipelineHandler(w http.ResponseWriter, r *http.Request)  {
 
-	file, _ := ioutil.ReadFile("./.data/pipelines/1/pipeline.json")
+	file, _ := ioutil.ReadFile(pipelinesDir + "/1/pipeline.json")
 	w.Write(file)
 }
 
@@ -25,4 +25,17 @@ func storePipelineHandler(w http.ResponseWriter, r *http.Request)  {
 	}
 
 	w.Write([]byte(`{"success": true}`));
+}
+
+func buildPipelineHandler(w http.ResponseWriter, _ *http.Request)  {
+	fail := pipelineRun("1")
+
+	var msg string
+	if fail == nil {
+		msg = "[Build Success]"
+	} else {
+		msg = "[Build Fail]" + fail.Error()
+	}
+
+	w.Write([]byte(msg));
 }

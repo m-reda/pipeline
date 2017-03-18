@@ -6,6 +6,8 @@ import (
 	"encoding/json"
 )
 
+var pipelinesDir = "./data/pipelines/"
+
 type Pipeline struct {
 	ID string
 	Name string
@@ -29,7 +31,7 @@ func pipelineRun(id string) error {
 func pipelineLoad(id string) (Pipeline, error) {
 	var pipeline Pipeline
 
-	file, err := ioutil.ReadFile("./.data/pipelines/" + id + "/pipeline.json")
+	file, err := ioutil.ReadFile(pipelinesDir + id + "/pipeline.json")
 
 	if err != nil {
 		return pipeline, err
@@ -59,7 +61,7 @@ func pipelineSave(id string, pipelineJson []byte) error{
 		return err
 	}
 
-    err = ioutil.WriteFile("./.data/pipelines/" + id + "/pipeline.json", pipelineJson, 0644)
+    err = ioutil.WriteFile(pipelinesDir + id + "/pipeline.json", pipelineJson, 0644)
 
 	if err != nil {
 		return err
