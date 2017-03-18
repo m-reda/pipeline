@@ -8,10 +8,17 @@ body {
   user-select: none; }
 
 #toolbox {
-  background-color: #232c3e;
-  border-radius: 5px;
+  background-color: rgba(35, 44, 62, 0.79);
   border: 1px solid #000;
-  padding: 10px 5px 0; }
+  padding: 10px 5px 0;
+  width: 300px;
+  height: 88%;
+  position: absolute;
+  top: 12%;
+  right: 0;
+  z-index: 100;
+  overflow: auto;
+  display: none; }
   #toolbox .unit {
     background-color: #364156;
     padding: 20px 10px;
@@ -21,7 +28,7 @@ body {
     margin-bottom: 10px; }
     #toolbox .unit:hover {
       border-color: #fd7e32;
-      cursor: move; }
+      cursor: pointer; }
 
 .NodeContainer#node_start {
   min-width: 150px; }
@@ -38,16 +45,22 @@ body {
   .NodeContainer#node_start ul > li.Output {
     text-align: center; }
 
-#save {
+#save, #add {
   background-color: #00bc19;
   color: #ffffff;
   border-radius: 4px;
   padding: 10px 40px;
   position: absolute;
-  bottom: 30px;
+  top: 10px;
   right: 20px;
   cursor: pointer; }
-  #save:hover {
+  #save:hover, #add:hover {
     background-color: #00d91d; }
+
+#add {
+  background-color: #328fbc;
+  right: 140px; }
+  #add:hover {
+    background-color: #3aa6db; }
 
 /*# sourceMappingURL=style.css.map */

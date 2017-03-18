@@ -11,10 +11,16 @@ import (
 func ServerRun() {
 
 	r := mux.NewRouter()
+
+	// pipeline routes
 	r.HandleFunc("/api/pipelines/{key}", singlePipelineHandler).Methods("GET")
 	r.HandleFunc("/api/pipelines/{key}", storePipelineHandler).Methods("PUT")
 	r.HandleFunc("/api/pipelines/{key}/build", buildPipelineHandler)
 
+	// units routes
+	r.HandleFunc("/api/units", allUnitsHandler).Methods("GET")
+
+	// static files server
     r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static")))
 
 	// get the server port from env

@@ -1,1 +1,102 @@
-{"ID":"1","Name":"Q/A","Tasks":{"example1":{"Name":"Example 1","X":347,"Y":326,"Command":"/bin/bash|-c|echo 'received {input1}'","Setting":{},"Inputs":{"input1":"Input 1"},"Outputs":{"output1":{"Name":"Output 1","Destination":[{"Task":"example3","Input":"input3"}]}}},"example2":{"Name":"Example 2","X":357,"Y":166,"Command":"","Setting":{},"Inputs":{"input1":"Input 1"},"Outputs":{"output1":{"Name":"Output 1","Destination":[{"Task":"example4","Input":"input1"}]},"output2":{"Name":"Output 1","Destination":[{"Task":"example3","Input":"input2"}]}}},"example3":{"Name":"Example 3","X":961,"Y":150,"Command":"","Setting":{},"Inputs":{"input1":"Input 1","input2":"Input 2","input3":"Input 3"},"Outputs":{"output1":{"Name":"Output 1","Destination":[]}}},"example4":{"Name":"Example 4","X":675,"Y":115,"Command":"","Setting":{},"Inputs":{"input1":"Input 1"},"Outputs":{"output1":{"Name":"Output 1","Destination":[{"Task":"example3","Input":"input1"}]}}},"start":{"Name":"Start","X":32,"Y":262,"Command":"/bin/bash|-c|echo 'output1:MAHMOUD'","Setting":null,"Inputs":{},"Outputs":{"output1":{"Name":"Start","Destination":[{"Task":"example1","Input":"input1"},{"Task":"example2","Input":"input1"}]}}}}}
+{
+	"ID": "1",
+	"Name": "Q/A",
+	"Tasks": {
+		"example1": {
+			"Name": "Example 1",
+			"X": 279,
+			"Y": 331,
+			"Command": "/bin/bash|-c|echo 'received {input1}'",
+			"Setting": {},
+			"Inputs": {
+				"input1": "Input 1"
+			},
+			"Outputs": {
+				"output1": {
+					"Name": "Output 1",
+					"Destination": []
+				}
+			}
+		},
+		"example2": {
+			"Name": "Example 2",
+			"X": 291,
+			"Y": 92,
+			"Command": "",
+			"Setting": {},
+			"Inputs": {
+				"input1": "Input 1"
+			},
+			"Outputs": {
+				"output1": {
+					"Name": "Output 1",
+					"Destination": [{
+						"Task": "example4",
+						"Input": "input1"
+					}]
+				},
+				"output2": {
+					"Name": "Output 1",
+					"Destination": [{
+						"Task": "example3",
+						"Input": "input1"
+					}]
+				}
+			}
+		},
+		"example3": {
+			"Name": "Example 3",
+			"X": 661,
+			"Y": 88,
+			"Command": "",
+			"Setting": {},
+			"Inputs": {
+				"input1": "Input 1",
+				"input2": "Input 2",
+				"input3": "Input 3"
+			},
+			"Outputs": {
+				"output1": {
+					"Name": "Output 1",
+					"Destination": []
+				}
+			}
+		},
+		"example4": {
+			"Name": "Example 4",
+			"X": 660,
+			"Y": 312,
+			"Command": "",
+			"Setting": {},
+			"Inputs": {
+				"input1": "Input 1"
+			},
+			"Outputs": {
+				"output1": {
+					"Name": "Output 1",
+					"Destination": []
+				}
+			}
+		},
+		"start": {
+			"Name": "Start",
+			"X": 34,
+			"Y": 223,
+			"Command": "/bin/bash|-c|echo 'output1:MAHMOUD'",
+			"Setting": null,
+			"Inputs": {},
+			"Outputs": {
+				"output1": {
+					"Name": "Start",
+					"Destination": [{
+						"Task": "example1",
+						"Input": "input1"
+					}, {
+						"Task": "example2",
+						"Input": "input1"
+					}]
+				}
+			}
+		}
+	}
+}

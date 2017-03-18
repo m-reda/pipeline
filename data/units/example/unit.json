@@ -1,0 +1,16 @@
+{
+	"ID": "example",
+	"Name": "Example 1",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "echo {input1}EXAMPLE2",
+	"Setting": {},
+	"Inputs": {
+		"input1": "Input 1",
+		"input2": "Input 2"
+	},
+	"Outputs": {
+		"output1": "Output 1",
+		"output2": "Output 2"
+	}
+}

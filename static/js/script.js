@@ -1,29 +1,24 @@
+var pipeline = {ID:'',Name:'',Tasks:{'':{Name:'',X:0,Y:0,Command:'',Inputs:{},Outputs:{'':{Name:'',Destination:[{Task:'',Input:''}]}}}}};
+var toolbox, units = {};
 var relations = {
 	inputs: {},
 	outputs: {},
 	links: []
 };
-var pipeline = {
-	ID: '-', Name: '-',
-	Tasks: {
-		"-": {
-			"Name": '-', "X": 10, "Y": 40,
-			"Command": '-',
-			"Inputs": {},
-			"Outputs": {
-				"-": {
-					"Name": '-',
-					"Destination": [{"Task": '-', "Input": '-'}]
-				}
-			}
-		}
-    }
-};
 
 $(document).ready(function () {
+	toolbox = $('#toolbox');
+
 	$.getJSON('http://localhost:3000/api/pipelines/1', function(data) {
 		pipeline = data;
 		drawNodes();
+	});
+
+	$.getJSON('http://localhost:3000/api/units', function(data) {
+		$.each(data, function (i, unit) {
+			units[unit.ID] = unit;
+			toolbox.append('<div class="unit" data-unit="' + unit.ID + '">' + unit.Name + '</div>')
+		});
 	});
 
 	$('#save').click(function () {
@@ -39,15 +34,17 @@ $(document).ready(function () {
 			l(data);
 		});
 	});
+
+	$('#add').click(function () {
+		toolbox.toggle()
+	});
 });
 
 function drawNodes()
 {
 	NEditor.init('board');
-
-	for(var taskID in pipeline.Tasks)
+	$.each(pipeline.Tasks, function (taskID, task)
 	{
-		var task = pipeline.Tasks[taskID];
 		var node = new NEditor.Node(task.Name, taskID)
 			node.setPosition(task.X, task.Y);
 			node.onDrag = function (x, y) {
@@ -57,52 +54,43 @@ function drawNodes()
 			};
 
 		// inputs
-		for(var inputID in task.Inputs) {
-			relations.inputs[taskID + '_' + inputID] = node.addInput(task.Inputs[inputID], inputID, taskID)
-		}
+		$.each(task.Inputs, function (inputID, input) {
+			relations.inputs[taskID + '_' + inputID] = node.addInput(input, inputID, taskID)
+		});
 
 		// outputs
-		for(var outputID in task.Outputs)
+		$.each(task.Outputs, function (outputID, output)
 		{
-			var output = task.Outputs[outputID];
 			var o = node.addOutput(output.Name, outputID, taskID);
 
 			// remove the old input
-			o.onRemove = function (index, output)
-			{
-				var destination = pipeline.Tasks[ output.node_id ].Outputs[ output.id ].Destination;
-				destination.splice(index, 1);
-
-				/*var oldDestinations = pipeline.Tasks[old.output.node_id].Outputs[old.output.id].Destination;
-				for(var idx in oldDestinations) {
-					var d = oldDestinations[idx];
-					if(d.Task == old.input.node_id && d.Input == old.input.id)
-						oldDestinations.splice(idx, 1);
-				}*/
+			o.onRemove = function (index, output) {
+				pipeline.Tasks[ output.node_id ].Outputs[ output.id ].Destination.splice(index, 1);
 			};
 
 			// update the new input
 			o.onAdd = function ()
 			{
 				var destinations = pipeline.Tasks[ this.node_id ].Outputs[ this.id ].Destination = [];
-				for(var i in this.paths) {
-					var input = this.paths[i].input;
+
+				$.each(this.paths, function (i, input) {
 					destinations.push({Task: input.node_id, input: input.id})
-				}
+				});
 			};
 
 			relations.outputs[ taskID+'_'+outputID ] = o;
 
-			for(var destID in output.Destination) {
-				relations.links.push([taskID+'_'+outputID, output.Destination[destID].Task+'_'+output.Destination[destID].Input]);
-			}
-		}
+			$.each(output.Destination, function (destID, dest) {
+				relations.links.push([
+					taskID+'_'+outputID,
+					dest.Task+'_'+dest.Input
+				]);
+			});
+		});
 
-	}
+	});
 
-	for(var i in relations.links)
-	{
-		var link = relations.links[i];
+	$.each(relations.links, function (i, link) {
 		relations.outputs[ link[0] ].connectTo(relations.inputs[ link[1] ])
-	}
+	});
 }
