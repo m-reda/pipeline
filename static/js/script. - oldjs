@@ -1,0 +1,114 @@
+var platform = null;
+var pipeline =
+{
+	start: 'example1',
+
+	units:
+	{
+		example1:   {
+			name: "Example 1",
+			outputs: ['example2', 'example3'],
+			x: 100, y: 150
+		},
+		example2:   {
+			name: "Example 2",
+			outputs: [],
+			x: 600, y: 50
+		},
+		example3:   {
+			name: "Example 3",
+			outputs: [],
+			x: 600, y: 200
+		}
+	}
+};
+var arrows = {},
+	boxWidth = 200,
+	boxHeight = 100;
+
+
+
+$(document).ready(function () {
+	platform = Snap("#platform");
+
+	for(var id in pipeline.units)
+	{
+		var unit = pipeline.units[id];
+
+		// TODO: Draw shape
+		var unitBox = platform.rect(unit.x, unit.y, boxWidth, boxHeight, 2);
+		unitBox.attr({
+			id: id,
+			fill: "#bada55",
+			stroke: "#fff",
+			strokeWidth: 2
+		})
+		.drag(function (dx, dy, x, y) {
+			x = x - boxWidth;
+			y = y - boxHeight;
+			this.attr({x: x, y: y});
+
+			var boxID = this.attr('id');
+			var unit = pipeline.units[boxID];
+			unit.x = x;
+			unit.y = y;
+
+			updateArrows(boxID, x, y);
+		});
+
+		// draw inputs
+		// TODO: Draw inputs
+
+		// draw outputs and arrows
+		for(var i in unit.outputs)
+		{
+			var output = unit.outputs[i];
+			var dist = pipeline.units[output];
+
+			var arrow = platform.line(
+				unit.x + boxWidth,
+				unit.y + (boxHeight / 2),
+				dist.x,
+				dist.y + (boxHeight / 2)
+			)
+			.attr({
+			  stroke: 'red',
+			  strokeWidth: 2,
+			  fill: 'yellow'
+			});
+
+
+			if (!(id in arrows))
+				arrows[id] = {inputs: [], outputs: []};
+
+			if (!(output in arrows))
+				arrows[output] = {inputs: [], outputs: []};
+
+			arrows[id].outputs.push(arrow);
+			arrows[output].inputs.push(arrow);
+		}
+	}
+});
+
+function updateArrows(id, x, y)
+{
+	for(var i in arrows[id].outputs)
+	{
+		arrows[id].outputs[i].attr({
+			x1: x + boxWidth,
+			y1: y + (boxHeight / 2)
+		});
+	}
+
+	for(var i in arrows[id].inputs)
+	{
+		arrows[id].inputs[i].attr({
+			x2: x,
+			y2: y + (boxHeight / 2)
+		});
+	}
+}
+
+function l(v) {
+	console.log(v)
+}

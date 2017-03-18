@@ -1,0 +1,75 @@
+{
+	"ID": "1",
+	"Name": "Q/A",
+	"Tasks":
+    {
+		"start": {
+			"Name": "Start",
+			"X": 10,
+			"Y": 150,
+			"Command": "/bin/bash|-c|echo 'output1:MAHMOUD'",
+			"Inputs": {},
+			"Outputs": {
+				"output1": {
+					"Name": "Run",
+					"Destination": [{
+						"Task": "example1",
+						"Input": "input1"
+					}]
+				}
+			}
+		},
+
+		"example1": {
+			"Name": "Example 1",
+			"X": 300,
+			"Y": 150,
+			"Command": "/bin/bash|-c|echo 'received {input1}'",
+            "Setting": {},
+			"Inputs": {
+				"input1": "Input 1"
+			},
+			"Outputs": {
+				"output1": {
+					"Name": "Output 1",
+					"Destination": [{
+						"Task": "example2",
+						"Input": "input1"
+					}]
+				}
+			}
+		},
+
+		"example2": {
+			"Name": "Example 2",
+			"X": 300,
+			"Y": 150,
+			"Command": "",
+            "Setting": {},
+			"Inputs": {
+				"input1": "Input 1"
+			},
+			"Outputs": {
+				"output1": {
+					"Name": "Output 1",
+					"Destination": [{
+						"Task": "example3",
+						"Input": "input1"
+					}]
+				}
+			}
+		},
+
+		"example3": {
+			"Name": "Example 3",
+			"X": 300,
+			"Y": 150,
+			"Command": "",
+            "Setting": {},
+			"Inputs": {
+				"input1": "Input 1"
+			},
+			"Outputs": {}
+		}
+	}
+}

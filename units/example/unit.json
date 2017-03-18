@@ -1,0 +1,6 @@
+{
+  "name":     "Example 1",
+  "version ": "0.0.1",
+  "creator":  "Mahmoud Reda",
+  "command":  "python ./unit_script.py %input1 %input2 %input3"
+}

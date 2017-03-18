@@ -1,0 +1,32 @@
+body {
+  background-color: #313749;
+  color: #ffffff;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+#toolbox {
+  background-color: #232c3e;
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding: 10px 5px 0; }
+  #toolbox .unit {
+    background-color: #364156;
+    padding: 20px 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    text-align: center;
+    margin-bottom: 10px; }
+    #toolbox .unit:hover {
+      border-color: #fd7e32;
+      cursor: move; }
+
+#platform {
+  background-color: #232c3e;
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding: 10px 5px 0; }
+
+/*# sourceMappingURL=style.css.map */
