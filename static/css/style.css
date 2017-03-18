@@ -23,10 +23,31 @@ body {
       border-color: #fd7e32;
       cursor: move; }
 
-#platform {
-  background-color: #232c3e;
-  border-radius: 5px;
-  border: 1px solid #000;
-  padding: 10px 5px 0; }
+.NodeContainer#node_start {
+  min-width: 150px; }
+  .NodeContainer#node_start header {
+    background-color: #00bc19;
+    position: absolute;
+    z-index: 1;
+    width: 126px;
+    height: 23px;
+    border-radius: 5px;
+    padding-top: 8px; }
+  .NodeContainer#node_start i {
+    z-index: 2; }
+  .NodeContainer#node_start ul > li.Output {
+    text-align: center; }
+
+#save {
+  background-color: #00bc19;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 40px;
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  cursor: pointer; }
+  #save:hover {
+    background-color: #00d91d; }
 
 /*# sourceMappingURL=style.css.map */

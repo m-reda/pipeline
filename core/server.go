@@ -10,7 +10,7 @@ import (
 
 func ServerRun() {
 
-
+	/*
 	fail := pipelineRun("1")
 
 	if fail == nil {
@@ -18,9 +18,13 @@ func ServerRun() {
 	} else {
 		println("[Build Fail]", fail.Error())
 	}
+	*/
 
-	return
 	r := mux.NewRouter()
+	r.HandleFunc("/api/pipelines/{key}", singlePipelineHandler).Methods("GET")
+	r.HandleFunc("/api/pipelines/{key}", storePipelineHandler).Methods("PUT")
+
+    r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static")))
 
 	// get the server port from env
 	port := os.Getenv("PORT")
@@ -28,7 +32,6 @@ func ServerRun() {
 		port = "8080"
 	}
 
-    r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static")))
 
     srv := &http.Server{
         Handler:      r,

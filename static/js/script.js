@@ -3,76 +3,99 @@ var relations = {
 	outputs: {},
 	links: []
 };
-var pipeline =
-{
-	start:   {
-		name: "Start",
-		x: 10, y: 150,
-		inputs: {},
-		outputs: {
-			output1: {name: 'Run', dist: {unit: 'example1', input: 'input1'}},
+var pipeline = {
+	ID: '-', Name: '-',
+	Tasks: {
+		"-": {
+			"Name": '-', "X": 10, "Y": 40,
+			"Command": '-',
+			"Inputs": {},
+			"Outputs": {
+				"-": {
+					"Name": '-',
+					"Destination": [{"Task": '-', "Input": '-'}]
+				}
+			}
 		}
-	},
-
-	example1:   {
-		name: "Example 1",
-		x: 300, y: 150,
-		inputs: {
-			input1: 'Input 1'
-		},
-		outputs: {
-			output1: {name: 'Output 1', dist: {unit: 'example2', input: 'input1'}},
-			output2: {name: 'Output 2', dist: {unit: 'example3', input: 'input2'}}
-		}
-	},
-	example2:   {
-		name: "Example 2",
-		x: 700, y: 100,
-		inputs: {
-			input1: 'Input 1',
-			input2: 'Input 2'
-		},
-		outputs: {
-			output1: {name: "Output 1"},
-			output2: {name: "Output 2", dist: {unit: 'example3', input: 'input1'}}
-		}
-	},
-	example3:   {
-		name: "Example 3",
-		x: 950, y: 300,
-		inputs: {
-			input1: 'Input 1',
-			input2: 'Input 2'
-		},
-		outputs: {
-			output1: {name: "Output 1"},
-			output2: {name: "Output 2"}
-		}
-	}
+    }
 };
 
+$(document).ready(function () {
+	$.getJSON('http://localhost:3000/api/pipelines/1', function(data) {
+		pipeline = data;
+		drawNodes();
+	});
 
-window.addEventListener("load",function(e)
+	$('#save').click(function () {
+		var btn = $(this).text("Loading");
+
+		$.ajax({
+			method: "PUT",
+			data: { pipeline: JSON.stringify(pipeline)},
+			url: 'http://localhost:3000/api/pipelines/1',
+			dataType: 'json'
+		}).done(function( data ) {
+			btn.text("Save");
+			l(data);
+		});
+	});
+});
+
+function drawNodes()
 {
-	for(var unitID in pipeline)
+	NEditor.init('board');
+
+	for(var taskID in pipeline.Tasks)
 	{
-		var unit = pipeline[unitID];
-		var node = new NEditor.Node(unit.name)
-			node.setPosition(unit.x, unit.y);
+		var task = pipeline.Tasks[taskID];
+		var node = new NEditor.Node(task.Name, taskID)
+			node.setPosition(task.X, task.Y);
+			node.onDrag = function (x, y) {
+				var task = pipeline.Tasks[this.id];
+				task.X = x;
+				task.Y = y;
+			};
 
 		// inputs
-		for(var inputID in unit.inputs) {
-			relations.inputs[unitID + '_' + inputID] = node.addInput(unit.inputs[inputID])
+		for(var inputID in task.Inputs) {
+			relations.inputs[taskID + '_' + inputID] = node.addInput(task.Inputs[inputID], inputID, taskID)
 		}
 
 		// outputs
-		for(var outputID in unit.outputs)
+		for(var outputID in task.Outputs)
 		{
-			var output = unit.outputs[outputID];
-			relations.outputs[unitID + '_' + outputID] = node.addOutput(output.name);
+			var output = task.Outputs[outputID];
+			var o = node.addOutput(output.Name, outputID, taskID);
 
-			if(output.dist)
-				relations.links.push([unitID + '_' + outputID, output.dist.unit + '_' + output.dist.input]);
+			// remove the old input
+			o.onRemove = function (index, output)
+			{
+				var destination = pipeline.Tasks[ output.node_id ].Outputs[ output.id ].Destination;
+				destination.splice(index, 1);
+
+				/*var oldDestinations = pipeline.Tasks[old.output.node_id].Outputs[old.output.id].Destination;
+				for(var idx in oldDestinations) {
+					var d = oldDestinations[idx];
+					if(d.Task == old.input.node_id && d.Input == old.input.id)
+						oldDestinations.splice(idx, 1);
+				}*/
+			};
+
+			// update the new input
+			o.onAdd = function ()
+			{
+				var destinations = pipeline.Tasks[ this.node_id ].Outputs[ this.id ].Destination = [];
+				for(var i in this.paths) {
+					var input = this.paths[i].input;
+					destinations.push({Task: input.node_id, input: input.id})
+				}
+			};
+
+			relations.outputs[ taskID+'_'+outputID ] = o;
+
+			for(var destID in output.Destination) {
+				relations.links.push([taskID+'_'+outputID, output.Destination[destID].Task+'_'+output.Destination[destID].Input]);
+			}
 		}
 
 	}
@@ -80,11 +103,11 @@ window.addEventListener("load",function(e)
 	for(var i in relations.links)
 	{
 		var link = relations.links[i];
-		relations.outputs[link[0]].connectTo(relations.inputs[link[1]])
+		relations.outputs[ link[0] ].connectTo(relations.inputs[ link[1] ])
 	}
 
-});
+}
 
-function l(v) {
-	console.log(v)
+function l() {
+	console.log(...arguments)
 }
