@@ -69,12 +69,11 @@ function drawNodes()
 			};
 
 			// update the new input
-			o.onAdd = function ()
-			{
+			o.onAdd = function () {
 				var destinations = pipeline.Tasks[ this.node_id ].Outputs[ this.id ].Destination = [];
 
-				$.each(this.paths, function (i, input) {
-					destinations.push({Task: input.node_id, input: input.id})
+				$.each(this.paths, function (i, conn) {
+					destinations.push({Task: conn.input.node_id, input: conn.input.id})
 				});
 			};
 
