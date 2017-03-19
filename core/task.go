@@ -6,7 +6,9 @@ import (
 )
 
 type Task struct {
+	ID string
 	Name string
+	Unit string
 	X int
 	Y int
 	Command string

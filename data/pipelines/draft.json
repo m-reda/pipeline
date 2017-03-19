@@ -3,7 +3,9 @@
 	"Name": "Q/A",
 	"Tasks": {
 		"example1": {
+			"ID": "example1",
 			"Name": "Example 1",
+			"Unit": "example",
 			"X": 279,
 			"Y": 331,
 			"Command": "/bin/bash|-c|echo 'received {input1}'",
@@ -20,6 +22,7 @@
 		},
 		"example2": {
 			"Name": "Example 2",
+			"Unit": "example",
 			"X": 291,
 			"Y": 92,
 			"Command": "",
