@@ -21,7 +21,7 @@ func ServerRun() {
 	r.HandleFunc("/api/units", allUnitsHandler).Methods("GET")
 
 	// static files server
-    r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static")))
+    r.PathPrefix("/").Handler(http.FileServer(http.Dir("./ui")))
 
 	// get the server port from env
 	port := os.Getenv("PORT")

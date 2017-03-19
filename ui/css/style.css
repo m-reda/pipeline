@@ -1,0 +1,138 @@
+body {
+  background-color: #313749;
+  color: #ffffff;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+#toolbox {
+  background-color: rgba(35, 44, 62, 0.79);
+  border: 1px solid #000;
+  padding: 10px 5px 0;
+  width: 300px;
+  height: 88%;
+  position: absolute;
+  top: 12%;
+  right: 0;
+  z-index: 100;
+  overflow: auto;
+  display: none; }
+  #toolbox .unit {
+    background-color: #364156;
+    padding: 20px 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    text-align: center;
+    margin-bottom: 10px; }
+    #toolbox .unit:hover {
+      border-color: #fd7e32;
+      cursor: pointer; }
+
+#save, #add {
+  background-color: #00bc19;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 40px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer; }
+  #save:hover, #add:hover {
+    background-color: #00d91d; }
+
+#add {
+  background-color: #328fbc;
+  right: 140px; }
+  #add:hover {
+    background-color: #3aa6db; }
+
+#linker .node_start > h3 {
+  background-color: #1ea92f;
+  padding: 17px 0;
+  border-radius: 5px; }
+#linker .node_start span {
+  display: none; }
+#linker .node_start .linker_outputs {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+/*
+linker
+*/
+.linker_container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto; }
+  .linker_container svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .linker_container svg path {
+      stroke-dasharray: 34,4,4,4;
+      fill: transparent;
+      stroke: #86d530;
+      stroke-width: 2; }
+      .linker_container svg path:hover {
+        stroke-width: 4;
+        stroke: #a8b938;
+        cursor: cell; }
+  .linker_container .linker_node {
+    background-color: #364156;
+    border-radius: 5px;
+    width: 200px;
+    position: absolute;
+    box-shadow: 3px 3px 5px #2a3344;
+    transition: box-shadow 0.2s; }
+    .linker_container .linker_node:hover {
+      box-shadow: 3px 3px 5px #222836; }
+    .linker_container .linker_node > h3 {
+      background-color: #45536e;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 5px 5px 0 0;
+      margin: 0;
+      padding: 5px 0;
+      cursor: move; }
+    .linker_container .linker_node:after {
+      content: " ";
+      height: 1px;
+      display: block;
+      clear: both; }
+  .linker_container .linker_inputs {
+    margin-left: -5px;
+    float: left; }
+    .linker_container .linker_inputs .linker_point {
+      margin: 2px 4px 0 0;
+      float: left; }
+  .linker_container .linker_outputs {
+    margin-right: -5px;
+    float: right; }
+    .linker_container .linker_outputs .linker_point {
+      margin: 2px 0 0 4px;
+      cursor: pointer;
+      float: right; }
+  .linker_container .linker_label {
+    margin: 20px 0;
+    font-size: 12px;
+    font-family: sans-serif;
+    color: #697690;
+    cursor: default; }
+  .linker_container .linker_point {
+    background-color: #00d91d;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; }
+    .linker_container .linker_point.selected {
+      background-color: #ffe63f; }
+  .linker_container.drag_path .linker_inputs .linker_point {
+    cursor: pointer; }
+
+/*# sourceMappingURL=style.css.map */
