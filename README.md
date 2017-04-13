@@ -1,6 +1,7 @@
 # Pipeline
 Pipeline is node-based automation server.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d74fab6f1f148c68dce4d285339f5d2)](https://www.codacy.com/app/m-reda/pipeline?utm_source=github.com&utm_medium=referral&utm_content=m-reda/pipeline&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/m-reda/pipeline.svg?branch=master)](https://travis-ci.org/m-reda/pipeline)
 [![Go Report](https://goreportcard.com/badge/github.com/m-reda/pipeline)](https://goreportcard.com/report/github.com/m-reda/pipeline)
 [![Docker Build Statu](https://img.shields.io/badge/docker-pipeline-green.svg?style=flat)](https://hub.docker.com/r/mreda/pipeline/)
