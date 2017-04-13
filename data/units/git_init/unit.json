@@ -1,0 +1,11 @@
+{
+	"ID": "git_init",
+	"Name": "Git Init",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git init",
+	"Setting": {},
+	"Inputs": {},
+	"Outputs": {}
+}

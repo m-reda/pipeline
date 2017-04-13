@@ -1,0 +1,15 @@
+{
+	"ID": "func_command",
+	"Name": "Run Command",
+	"Group": "general",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin func command \"{command}\"",
+	"Setting": {},
+	"Inputs": {
+		"command": "command"
+	},
+	"Outputs": {
+		"output": "output"
+	}
+}

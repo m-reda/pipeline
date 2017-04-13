@@ -1,0 +1,18 @@
+{
+	"ID": "func_url",
+	"Name": "Request URL",
+	"Group": "general",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin func url {method} {url}",
+	"Setting": {},
+	"Inputs": {
+		"url": "URL",
+		"method": "Method"
+	},
+	"Outputs": {
+		"url": "URL",
+		"method": "Method",
+		"body": "Body"
+	}
+}

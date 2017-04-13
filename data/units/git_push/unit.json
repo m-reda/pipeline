@@ -1,0 +1,17 @@
+{
+	"ID": "git_push",
+	"Name": "Git Push",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git push {remote} {branch}",
+	"Setting": {},
+	"Inputs": {
+		"remote": "Remote",
+		"branch": "Branch"
+	},
+	"Outputs": {
+		"remote": "Remote",
+		"branch": "Branch"
+	}
+}

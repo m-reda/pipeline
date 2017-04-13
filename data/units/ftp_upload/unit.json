@@ -1,0 +1,22 @@
+{
+	"ID": "ftp_upload",
+	"Name": "FTP Upload File",
+	"Group": "ftp",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin ftp upload {source} {destination}",
+	"Setting": {
+		"host": {"Name": "Host", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_HOST"},
+		"port": {"Name": "Port", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_PORT"},
+		"username": {"Name": "Username", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_USER"},
+		"password": {"Name": "Password", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_PASS"}
+	},
+	"Inputs": {
+		"source": "Source",
+		"destination": "Destination"
+	},
+	"Outputs": {
+		"from": "From",
+		"to": "To"
+	}
+}

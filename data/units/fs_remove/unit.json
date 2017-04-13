@@ -1,0 +1,17 @@
+{
+	"ID": "fs_remove",
+	"Name": "Remove",
+	"Group": "filesystem",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin fs remove {path}",
+	"Setting": {
+		"rf": {"Name": "Force Recursively", "Type": "checkbox", "Value": ""}
+	},
+	"Inputs": {
+		"path": "Path"
+	},
+	"Outputs": {
+		"path": "Path"
+	}
+}

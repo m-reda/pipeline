@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pipeline</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/linker.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+    <div id="editor">
+        <div class="toolbar">
+            <i id="pipelines_open" class="material-icons">menu</i>
+            <input  id="pipeline_title" type="text" class="title" placeholder="Pipeline Name">
+            <button id="save">Save</button>
+            <div id="notSaved">There is unsaved changes</div>
+
+
+            <button id="toolbox_open" class="material-icons">add</button>
+            <div id="build_list">
+                <button id="build">Build</button>
+                <button id="build_list_toggle" class="material-icons">keyboard_arrow_down</button>
+                <ul></ul>
+            </div>
+        </div>
+
+        <div id="linker"></div>
+
+        <div id="toolbox" class="sidebar">
+            <h3 class="title"><i class="sidebar_close material-icons">close</i> Units</h3>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+
+    <div id="pipelines" class="sidebar">
+        <h3 class="title"><i class="sidebar_close material-icons">close</i> Pipelines</h3>
+        <div id="add" class="pipeline item">New Pipeline</div>
+    </div>
+
+    <div id="build_details">
+        <div class="panel">
+            <div class="head">Build Details <i id="build_close" class="material-icons">close</i></div>
+            <div id="build_logs"></div>
+        </div>
+    </div>
+
+    <div id="setting">
+        <h1><span></span> Setting <i class="close material-icons">close</i></h1>
+        <h3>Inputs Overwrite</h3>
+        <div class="inputs"></div>
+        <h3>Task Setting</h3>
+        <div class="setting"></div>
+    </div>
+
+    <div id="scheduler">
+        <h1><span></span> Triggers <i class="close material-icons">close</i></h1>
+
+        <h3>URL Trigger</h3>
+        <input class="url_trigger" type="text" title="URL Trigger" disabled >
+
+        <h3>Scheduler</h3>
+        <div class="cron-ui"></div>
+        <button>Add</button>
+        <span></span>
+
+        <ul></ul>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cron.min.js"></script>
+    <script src="js/linker.js"></script>
+    <script src="js/nodes.js"></script>
+    <script src="js/build.js"></script>
+    <script src="js/units.js"></script>
+    <script src="js/pipeline.js"></script>
+</body>
+</html>

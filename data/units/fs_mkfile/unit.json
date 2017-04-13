@@ -1,0 +1,16 @@
+{
+	"ID": "fs_mkfile",
+	"Name": "Make File",
+	"Group": "filesystem",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin fs mkfile {path} \"{content}\"",
+	"Setting": {},
+	"Inputs": {
+		"path": "Path",
+		"content": "Content"
+	},
+	"Outputs": {
+		"path": "Path"
+	}
+}

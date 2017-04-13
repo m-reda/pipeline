@@ -1,0 +1,20 @@
+{
+	"ID": "ftp_mkdir",
+	"Name": "FTP Make Dir",
+	"Group": "ftp",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin ftp mkdir {source} {destination}",
+	"Setting": {
+		"host": {"Name": "Host", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_HOST"},
+		"port": {"Name": "Port", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_PORT"},
+		"username": {"Name": "Username", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_USER"},
+		"password": {"Name": "Password", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_PASS"}
+	},
+	"Inputs": {
+		"path": "Path"
+	},
+	"Outputs": {
+		"path": "Path"
+	}
+}

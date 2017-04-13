@@ -1,0 +1,22 @@
+{
+	"ID": "ftp_rename",
+	"Name": "FTP Rename",
+	"Group": "ftp",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin ftp rename {from} {to}",
+	"Setting": {
+		"host": {"Name": "Host", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_HOST"},
+		"port": {"Name": "Port", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_PORT"},
+		"username": {"Name": "Username", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_USER"},
+		"password": {"Name": "Password", "Type": "text", "Value": "", "EnvVar": "PIPELINE_FTP_PASS"}
+	},
+	"Inputs": {
+		"from": "From",
+		"to": "To"
+	},
+	"Outputs": {
+		"from": "From",
+		"to": "To"
+	}
+}

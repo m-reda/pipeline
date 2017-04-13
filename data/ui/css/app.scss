@@ -1,0 +1,540 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+	background-color: #313749;
+	color: #ffffff;
+	font-family: 'Nunito', sans-serif;
+	margin: 0;
+}
+
+.linker_board {
+	background: radial-gradient(black 10%, transparent 16%) 0 0, radial-gradient(black 10%, transparent 16%) 8px 8px, radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#313749;
+	background-size:16px 16px;
+}
+
+.sidebar
+{
+	background-color: rgba(35, 44, 62, 0.88);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 299px;
+	max-width: 100%;
+	height: 100%;
+	border-right: 1px solid #1ea92f;
+	z-index: 100;
+	overflow: auto;
+
+	-webkit-transition: transform 0.3s;
+	-moz-transition: transform 0.3s;
+	transition: transform 0.3s;
+
+
+	-webkit-transform: translate(-300px, 0);
+	-moz-transform: translate(-300px, 0);
+	transform: translate(-300px, 0);
+
+	&.opened {
+		-webkit-transform: translate(0, 0) !important;
+		-moz-transform: translate(0, 0) !important;
+		transform: translate(0, 0) !important;
+	}
+
+	.title {
+		margin: 15px;
+		text-align: center;
+		font-size: 20px;
+		color: #e8e8e8;
+	}
+
+	.sidebar_close {
+		float: left;
+		cursor: pointer;
+	}
+
+	.item
+	{
+		background-color: #364156;
+		border-radius: 5px;
+		border: 1px solid #000;
+		margin: 5px;
+		transition: border-color 0.5s;
+		cursor: pointer;
+		padding: 10px;
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+
+		&:hover { border-color: #1ea92f; }
+	}
+}
+
+/*
+* Pipelines page
+*/
+#pipelines
+{
+
+	#add {
+		background-color: #00bc19;
+		transition: background-color 0.5s;
+		margin-bottom: 5px;
+		&:hover { background-color: #00d91d; }
+	}
+
+	.pipeline
+	{
+		.delete {
+			background-color: #bc080f;
+			color: #ffffff;
+			border-radius: 2px;
+			height: 100%;
+			border: 0;
+			padding: 0 5px;
+			transition: background-color 0.3s;
+    		outline: none;
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			&:hover {
+				background-color: #cd0910;
+			}
+		}
+	}
+}
+
+/*
+* Editor page
+*/
+#editor
+{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+
+	#linker {
+    	position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	#build_list
+	{
+		position: relative;
+		float: right;
+		display: none;
+
+		#build {
+			border-radius: 0 5px 5px 0;
+		}
+
+		#build_list_toggle {
+			background-color: #28789e;
+			border-radius: 5px 0 0 5px;
+			padding: 4.5px;
+			max-width:40px;
+			margin-right: 0;
+		}
+		
+		ul {
+			background-color: #28789e;
+			position: absolute;
+			z-index: 40;
+			top: 100%;
+			left: 0;
+			margin: -4px 0 0;
+			width: 139px;
+			padding: 0;
+			list-style: none;
+			border-radius: 0 0 5px 5px;
+			display: none;
+			max-height: 400px;
+			overflow: auto;
+
+			li {
+				padding: 7px;
+				&:hover { cursor: pointer; background-color: #1f5e7c;}
+			}
+			.remove {
+				font-size: 14px;
+				float: right;
+
+				&:hover {
+					background-color: #ff2a23;
+				}
+			}
+		}
+	}
+
+	#toolbox_open {
+		padding: 4px 12px;
+
+		@media (max-width: 600px) {
+			position: absolute;
+			bottom: 10px;
+			right: 0;
+			z-index: 90;
+		}
+	}
+
+	#toolbox
+	{
+		left: auto;
+		right: 0;
+		border: 0;
+		border-left: 1px solid #1ea92f;
+
+		-webkit-transform: translate(300px, 0);
+		-moz-transform: translate(300px, 0);
+		transform: translate(300px, 0);
+
+		> div {
+			border: 1px solid #475571;
+    		margin: 9px;
+
+			&:after {
+				content: " ";
+				display: block;
+				clear: both;
+			}
+
+			h3 {
+				background-color: #475571;
+				margin: 0 0 5px;
+				padding: 5px;
+				color: #e0e0e0;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+
+		.item {
+			margin: 1px;
+			width: 114px;
+			color: #8d9dbb;
+			font-size: 12px;
+			float: left;
+
+			span {
+				vertical-align: middle;
+			}
+		}
+	}
+
+	#linker .node_start {
+		h3 {
+			background-color: #1ea92f;
+			padding: 17px 10px;
+			border-radius: 5px;
+			text-align: right;
+			color: #0c5215;
+
+			&:before {
+				content: "Triggers";
+				float: left;
+				margin-left: 16px;
+			}
+		}
+
+		span { display: none; }
+
+		.setting {
+			top: 17px;
+			background-color: #13771f;
+			fill: #eee;
+		}
+
+		.linker_outputs {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+
+	.toolbar
+	{
+		background-color: #282e3f;
+		border-bottom: 1px solid #1ea92f;
+		height: 50px;
+
+		#pipelines_open {
+			margin: 5px;
+			padding: 5px;
+			font-size: 31px;
+			float: left;
+			cursor: pointer;
+		}
+
+		#pipeline_title {
+			width: 200px;
+			height: 21px;
+			color: #e6e8eb;
+			float: left;
+			font-size: 17px;
+			background-color: transparent;
+			padding: 5px;
+			margin: 10px 5px 0 0;
+    		outline: none;
+			border: 1px solid transparent;
+    		border-bottom-color: #2b5600;
+
+			@media (max-width: 450px) {
+				width: 100px;
+			}
+		}
+
+		#pipeline_title:focus {
+			border-color: #00bc19;
+		}
+
+		button {
+			background-color: #328fbc;
+			color: #ffffff;
+			border-radius: 2px;
+			padding: 10px 40px;
+			margin:10px 5px 0 0;
+			border: 0;
+			float: right;
+			cursor: pointer;
+			transition: background-color 0.3s;
+    		outline: none;
+
+			&:hover {
+				background-color: #3aa6db !important;
+			}
+		}
+
+		#save {
+			background-color: #00bc19;
+			float: left;
+			padding:10px 40px;
+			&:hover { background-color: #00d91d; }
+
+			@media (max-width: 530px) {
+				position: absolute;
+				bottom: 10px;
+				right: 55px;
+				z-index: 90;
+			}
+		}
+
+		#notSaved {
+			margin: 19px 0 0 5px;
+			float: left;
+			font-size: 10px;
+			color: #ffc000;
+			display: none;
+
+
+			@media (max-width: 450px) {
+				position: absolute;
+				bottom: 22px;
+    			left: 5px;
+				z-index: 90;
+			}
+		}
+	}
+}
+
+
+/*
+* Build Details
+*/
+#build_details
+{
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 100;
+
+	.panel
+	{
+		background-color: #364156;
+		height: 90%;
+		width: 95%;
+		margin: 2.5% 0 0 2.5% ;
+		border-radius: 5px;
+		border: 1px solid #000;
+		min-width: 200px;
+		overflow: auto;
+
+		.head {
+			font-size: 15px;
+			background-color: #2e3948;
+			padding: 10px;
+			border-bottom: 1px solid #0f5a18;
+
+			i {
+				background-color: #3d4a62;
+				padding: 2px 5px;
+				border-radius: 4px;
+				color: #5d7095;
+				font-size: 14px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+				float: right;
+
+				&:hover { background-color: #a30f0f;  }
+			}
+		}
+	}
+
+	.log
+	{
+		background-color: #3f4c65;
+		border-radius: 5px;
+		margin: 5px;
+		padding: 10px;
+
+		h3 {
+			span {
+				background-color: #323c50;
+				padding: 5px;
+				font-size: 10px;
+				margin-left: 10px;
+				border-radius: 4px;
+				color: #687fad;
+
+				&:before {
+					content: "$";
+					color: #00bc19;
+					margin-right: 5px;
+				}
+			}
+		}
+
+		h5 {
+			margin: 0 0 0 10px;
+		}
+
+		pre {
+			background-color: #323c50;
+			padding: 10px;
+			font-size: 12px;
+			border-radius: 4px;
+			color: #72ea7d;
+			margin: 0 10px;
+		}
+	}
+}
+
+/**
+* Node Setting
+*/
+#setting, #scheduler
+{
+	background-color: #364156;
+	width: 400px;
+	height: 500px;
+	max-width: 95%;
+	max-height: 90%;
+	margin: auto;
+	border-radius: 5px;
+	border: 1px solid #000;
+	overflow: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	display: none;
+
+	h1 {
+		background-color: #252e40;
+		margin: 0;
+		text-align: center;
+		padding: 8px;
+		font-size: 17px;
+		color: #dedede;
+
+		.close {
+			float: right;
+			cursor: pointer;
+		}
+	}
+	h3 {
+		color: #dedede;
+		background-color: #3c475a;
+		padding: 5px;
+		border-bottom: 1px solid #2b364a;
+		margin: 0 0 4px;
+	}
+	h4 {
+		margin:0 0 7px 2%;
+	}
+	input {
+		width: 94%;
+		margin-left: 2%;
+		display: block;
+		padding: 5px;
+		border: 0;
+		background-color: #c0c8da;
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
+	.env_var {
+		background-color: #1e252f;
+		border-radius: 3px;
+		margin-left: 8px;
+		font-size: 10px;
+		padding: 2px 6px;
+		color: #667494;
+	}
+}
+
+#scheduler
+{
+	.cron-ui {
+		padding: 0 1%;
+	}
+	button {
+		background-color: #00bc19;
+		display: block;
+		border: 0;
+		text-align: center;
+		color: #fff;
+		width: 98%;
+		margin: 10px auto;
+		padding: 5px;
+		font-size: 17px;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			background-color: #2a3448;
+			padding: 5px 15px;
+			margin-bottom: 5px;
+			font-size: 15px;
+
+			.remove {
+				float: right;
+				font-size: 18px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+#overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	display: none;
+	z-index: 9;
+}

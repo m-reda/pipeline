@@ -1,0 +1,25 @@
+language: go
+sudo: false
+
+matrix:
+  include:
+    - go: 1.5
+    - go: 1.6
+    - go: 1.7
+    - go: 1.8
+    - go: tip
+  allow_failures:
+    - go: tip
+
+install:
+  - go get github.com/gorilla/mux
+  - go get github.com/gorilla/websocket
+  - go get github.com/robfig/cron
+  - go get github.com/urfave/cli
+  - go get github.com/jlaffaye/ftp
+  - go get github.com/satori/go.uuid
+  - go get github.com/stretchr/testify
+  - go get golang.org/x/crypto/ssh
+
+script:
+ - go test -v ./...
