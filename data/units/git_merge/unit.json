@@ -1,0 +1,17 @@
+{
+	"ID": "git_merge",
+	"Name": "Git Merge",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git merge {branch}",
+	"Setting": {},
+	"Inputs": {
+		"remote": "Remote",
+		"branch": "Branch"
+	},
+	"Outputs": {
+		"remote": "Remote",
+		"branch": "Branch"
+	}
+}

@@ -1,0 +1,164 @@
+/*!
+ * Linker, Node Editor Library v0.0.1
+ * https://github.com/m-reda/linker
+ *
+ *
+ * Released under the MIT license
+ *
+ * Date: 2017-03-19
+ */
+
+html, body {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	position: fixed;
+}
+
+.linker_container
+{
+	background-color: #313749;
+	position: relative;
+	height: 1000px;
+	overflow: auto;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	.linker_board {
+		width: 2000px;
+		height: 2000px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	svg#linker_paths {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		path {
+			stroke-dasharray: 34,4,4,4;
+			fill: transparent;
+			stroke: rgb(134, 213, 48);
+			stroke-width: 2;
+
+			&:hover {
+				stroke-width: 4;
+				stroke: #a8b938;
+				cursor: cell;
+			}
+		}
+	}
+
+	.linker_node
+	{
+		background-color: #364156;
+		border-radius: 5px;
+		width: 200px;
+		position: absolute;
+		box-shadow: 3px 3px 5px #2a3344;
+		transition: box-shadow 0.2s;
+
+		&:hover {
+			box-shadow: 3px 3px 5px #222836;
+		}
+
+		> h3 {
+			background-color: #45536e;
+			color: #ffffff;
+			font-size: 14px;
+			text-align: center;
+			border-radius: 5px 5px 0 0;
+			margin: 0;
+			padding: 5px 0;
+			cursor: move;
+
+			.remove, .setting {
+				position: absolute;
+				top: 5px;
+				right: 4px;
+				background-color: #323c50;
+				padding: 0 5px 2px;
+				border-radius: 4px;
+				color: #3f4c65;
+				font-family: Tahoma, serif;
+				font-weight: normal;
+				cursor: pointer;
+				transition: background-color 0.3s;
+
+				&:after { content: "x"; display: block; }
+				&:hover { background-color: #a30f0f;  }
+			}
+
+			.setting {
+				width: 11px;
+				height: 11px;
+				right: auto;
+				left: 3px;
+				padding: 4px;
+				fill: #697896;
+
+				&:after { display: none; }
+				&:hover { background-color: #8396bb; fill: #2e3542  }
+			}
+		}
+
+		&:after {
+			content: " ";
+			height: 1px;
+			display: block;
+			clear: both;
+		}
+	}
+
+	.linker_inputs {
+		margin-left: -5px;
+		float: left;
+
+		.linker_point {
+			margin: 2px 4px 0 0;
+			float: left;
+		}
+	}
+
+	.linker_outputs {
+		margin-right: -5px;
+		float: right;
+		text-align: right;
+
+		.linker_point {
+			margin: 2px 0 0 4px;
+			cursor: pointer;
+			float: right;
+		}
+	}
+
+	.linker_label {
+		margin: 20px 0;
+		font-size: 12px;
+		font-family: sans-serif;
+		color: #697690;
+		cursor: default;
+	}
+
+	.linker_point {
+		background-color: #00d91d;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+
+		&.selected {
+			background-color: #ffe63f;
+		}
+	}
+
+	&.drag_path .linker_inputs .linker_point {
+		cursor: pointer;
+	}
+}

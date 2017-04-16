@@ -1,0 +1,7 @@
+/pipeline
+/gin-bin
+/bin
+/.idea
+*.css.map
+*.css
+coverage.out

@@ -1,0 +1,15 @@
+{
+	"ID": "git_pull",
+	"Name": "Git Pull",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git pull {remote}",
+	"Setting": {},
+	"Inputs": {
+		"remote": "Remote"
+	},
+	"Outputs": {
+		"remote": "Remote"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"ID": "func_unzip",
+	"Name": "Unzip",
+	"Group": "general",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin func unzip {zip_name}",
+	"Setting": {},
+	"Inputs": {
+		"zip_name": "Zip Name"
+	},
+	"Outputs": {
+		"zip_name": "Zip Name"
+	}
+}

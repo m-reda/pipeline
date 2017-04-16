@@ -1,0 +1,18 @@
+{
+	"ID": "func_email",
+	"Name": "Send Email",
+	"Group": "general",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin func email {email_addr} \"{message}\"",
+	"Setting": {
+		"smtp_host": {"Name": "SMTP Host", "Type": "text", "Value": ""},
+		"smtp_username": {"Name": "SMTP Username", "Type": "text", "Value": ""},
+		"smtp_password": {"Name": "SMTP Password", "Type": "text", "Value": ""}
+	},
+	"Inputs": {
+		"email_addr": "Email Address",
+		"message": "Message"
+	},
+	"Outputs": {}
+}

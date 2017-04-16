@@ -1,0 +1,13 @@
+{
+	"ID": "git_add",
+	"Name": "Git Add",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git add {files}",
+	"Setting": {},
+	"Inputs": {
+		"files": "Files"
+	},
+	"Outputs": {}
+}

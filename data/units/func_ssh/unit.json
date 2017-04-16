@@ -1,0 +1,22 @@
+{
+	"ID": "func_ssh",
+	"Name": "SSH",
+	"Group": "general",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin func ssh {host} {username} \"{command}\"",
+	"Setting": {
+		"host": {"Name": "Key", "Type": "text", "Value": "", "EnvVar": "PIPELINE_SSH_KEY"},
+		"port": {"Name": "Password", "Type": "text", "Value": "", "EnvVar": "PIPELINE_SSH_PASSWORD"}
+	},
+	"Inputs": {
+		"host": "Host",
+		"username": "Username",
+		"command": "Command"
+	},
+	"Outputs": {
+		"host": "Host",
+		"username": "Username",
+		"output": "Output"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"ID": "git_remote_add",
+	"Name": "Git Add Remote",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git remote_add {name} {url}",
+	"Setting": {},
+	"Inputs": {
+		"name": "Name",
+		"url": "URL"
+	},
+	"Outputs": {
+		"name": "Name",
+		"url": "URL"
+	}
+}

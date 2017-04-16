@@ -1,0 +1,16 @@
+{
+	"ID": "git_clone",
+	"Name": "Git Clone",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git clone {repository}",
+	"Setting": {},
+	"Inputs": {
+		"repository": "Repository"
+	},
+	"Outputs": {
+		"repository": "Repository",
+		"local": "Local"
+	}
+}

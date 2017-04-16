@@ -1,0 +1,15 @@
+{
+	"ID": "git_checkout",
+	"Name": "Git Checkout",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git checkout {branch}",
+	"Setting": {},
+	"Inputs": {
+		"branch": "Branch"
+	},
+	"Outputs": {
+		"branch": "Branch"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"ID": "git_commit",
+	"Name": "Git Commit",
+	"Group": "git",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin git commit \"{message}\"",
+	"Setting": {},
+	"Inputs": {
+		"message": "Message"
+	},
+	"Outputs": {}
+}

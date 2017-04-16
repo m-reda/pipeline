@@ -1,0 +1,4 @@
+linker.* linguist-vendored
+jquery.min.js linguist-vendored
+jquery-cron-min.js linguist-vendored
+Makefile linguist-vendored

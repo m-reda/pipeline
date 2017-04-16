@@ -1,0 +1,15 @@
+{
+	"ID": "fs_mkdir",
+	"Name": "Make Dir",
+	"Group": "filesystem",
+	"Version ": "0.0.1",
+	"Creator": "Mahmoud Reda",
+	"Command": "bin:/builtin fs mkdir {path}",
+	"Setting": {},
+	"Inputs": {
+		"path": "Path"
+	},
+	"Outputs": {
+		"path": "Path"
+	}
+}
